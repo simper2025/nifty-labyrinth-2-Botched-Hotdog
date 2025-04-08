@@ -13,11 +13,15 @@ enum class Item {
  */
 struct MazeCell {
     Item whatsHere; // Which item, if any, is present.
+    int ID;
 
     MazeCell* north;
     MazeCell* south;
     MazeCell* east;
     MazeCell* west;
+
+    MazeCell(int id) : ID(id), whatsHere(Item::NOTHING){};
+    MazeCell() = default;
 };
 
 /**

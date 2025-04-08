@@ -146,7 +146,10 @@ namespace {
     /* Clears all the links between the given group of nodes. */
     void clearGraph(vector<MazeCell*>& nodes) {
         for (auto* node: nodes) {
-            *node = MazeCell();
+            node->east = nullptr;
+            node->north = nullptr;
+            node->west = nullptr;
+            node->south = nullptr;
         }
     }
 
@@ -225,7 +228,7 @@ namespace {
     vector<MazeCell*> makeTwistyMaze(size_t numNodes, mt19937& generator) {
         vector<MazeCell*> result;
         for (size_t i = 0; i < numNodes; i++) {
-            result.push_back(new MazeCell());
+            result.push_back(new MazeCell(i));
         }
 
         /* Keep generating mazes until we get a connected one. */
